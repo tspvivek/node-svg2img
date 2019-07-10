@@ -109,4 +109,13 @@ describe('Convert SVG', function () {
             img.src = data;
         });
     });
+
+    it('#20',function(done) {
+        svg2img(__dirname+'/20.svg', {}, function(error, data) {
+            expect(error).not.to.be.ok();
+            expect(Buffer.isBuffer(data)).to.be.ok();
+            expect(data.length).to.be.above(0);
+            done();
+        })
+    });
 });
