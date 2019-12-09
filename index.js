@@ -32,7 +32,7 @@ function svg2img(svg, options, callback) {
         if (!format) {
             format = 'png';
         }
-        var canvas = convert(content, options);
+        var canvas = convert(content, options, callback);
         var stream;
         if (format === 'jpg' || format === 'jpeg') {
             stream = canvas.jpegStream({
@@ -55,9 +55,13 @@ function svg2img(svg, options, callback) {
     });
 }
 
-function convert(svgContent,options) {
+function convert(svgContent, options, callback) {
     var canvas = Canvas.createCanvas(options.width||100, options.height||100);
-    canvg(canvas, svgContent, { ignoreMouse: true, ignoreAnimation: true, ImageClass: Canvas.Image });
+    try {
+        canvg(canvas, svgContent, { ignoreMouse: true, ignoreAnimation: true, ImageClass: Canvas.Image });
+    } catch (error) {
+        callback(error);
+    }
     return canvas;
 }
 
