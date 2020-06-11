@@ -9,12 +9,12 @@ Please notice: this library is only for Node, can not run in browsers.
 
 Because of [xmldom](https://github.com/jindw/xmldom), it requires Node.js 10 or newer.
 
-(If your node version is lower, you can install node-svg2img@0.6.3 instead which only required node 4)
+(If your node version is lower, you can `npm i svg2img@0.6.3` instead which only required node 4)
 
 ## Install
 
 ```bash
-npm install svg2img
+npm i svg2img
 ```
 
 ## Usage
