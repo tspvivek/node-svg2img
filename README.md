@@ -5,9 +5,11 @@
 A high-performance in-memory convertor to convert svg to png/jpeg images for Node.
 Based on [canvg](https://github.com/gabelerner/canvg) and [node-canvas](https://github.com/Automattic/node-canvas)
 
-Because of [jsdom](https://github.com/tmpvar/jsdom), it requires Node.js 4 or newer.
-
 Please notice: this library is only for Node, can not run in browsers.
+
+Because of [xmldom](https://github.com/jindw/xmldom), it requires Node.js 10 or newer.
+
+(If your node version is lower, you can install node-svg2img@0.6.3 instead which only required node 4)
 
 ## Install
 
