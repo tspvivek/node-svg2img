@@ -3,7 +3,7 @@ var svg2img = require('../index'),
     btoa = require('btoa'),
     fs = require('fs'),
     Image = require('canvas').Image,
-    Image64 = require('node-base64-image'),
+    { encode } = require('node-base64-image'),
     util = require('util');
 describe('Convert SVG', function () {
     it('convert a svg file to png',function(done) {
@@ -86,7 +86,7 @@ describe('Convert SVG', function () {
 
     it('convert a svg with an image', function (done) {
         var imageUrl = __dirname+'/zhwiki-hans.png';
-        var base64 = await Image64.encode(imageUrl, {local: true});
+        var base64 = await encode(imageUrl, {local: true});
         var svgString = util.format('<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="540" height="258" ' +
                 'viewBox="0 0 540 258"><image width="540" height="258" x="0" y="0" href="%s"></image></svg>', 'data:image/png;base64,' + base64.toString('base64'));
             svg2img(svgString, function(error, data) {
