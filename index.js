@@ -47,7 +47,9 @@ function svg2img(svg, options, callback) {
                 quality: options['quality'] // JPEG quality (0-100) default: 75
             });
         } else {
-            stream = canvas.createPNGStream();
+            stream = canvas.createPNGStream({
+                compressionLevel: options['compressionLevel']
+            });
         }
         var data = [];
         var pos = 0;
