@@ -29,7 +29,7 @@ function svg2img(svg, options, callback) {
 
         // Set the width and height with the options in resvg-js.
         options.resvg = options.resvg ? options.resvg : {};
-        
+
         // JPEG quality (0-100) default: 75
         options.quality = options.quality ? parseInt(options.quality, 10) : 75;
         options.format = options.format ? options.format.toLowerCase() : 'png';
@@ -67,97 +67,6 @@ function svg2img(svg, options, callback) {
         callback(null, imgBuffer);
     });
 }
-
-// function scale(svgContent, w, h, preserveAspectRatio) {
-//     var index = svgContent.indexOf('<svg');
-//     var svgTag = [];
-//     var endIndex = index;
-//     for (var i = index; i < svgContent.length; i++) {
-//         var char = svgContent.charAt(i);
-//         svgTag.push(char);
-//         if (char === '>') {
-//             endIndex = i;
-//             break;
-//         }
-//     }
-//     svgTag = svgTag.join('').replace(/\n/g, ' ').replace(/\r/g, '');
-//     var finalAspectRatio;
-//     if (preserveAspectRatio) {
-//         if (typeof preserveAspectRatio === 'string') {
-//             finalAspectRatio = '"' + preserveAspectRatio + '"';
-//         } else {
-//             if (/ preserveAspectRatio\W/.test(svgContent)) {
-//                 var quoChar = svgTag.match(/ preserveAspectRatio\s*=\s*(['"])/);
-//                 if (quoChar) {
-//                     quoChar = quoChar[1];
-//                     var aspectRatio = svgTag.match(new RegExp(' preserveAspectRatio\\s*=\\s*' + quoChar + '([^' + quoChar + ']*)'));
-//                     if (aspectRatio && aspectRatio[1]) {
-//                         finalAspectRatio = aspectRatio[1].replace(/^\s*(\S.*\S)\s*$/, '"$1"');
-//                     }
-//                 }
-//             }
-//         }
-//     }
-//     var props = {};
-//     var splits = svgTag.substring(4, svgTag.length - 1).split(' ');
-//     var lastKey;
-//     var i;
-//     for (i = 0; i < splits.length; i++) {
-//         if (splits[i] === '') {
-//             continue;
-//         } else {
-//             if (splits[i].indexOf('=') < 0) {
-//                 props[lastKey] = props[lastKey] + ' ' + splits[i];
-//             } else {
-//                 var keyvalue = splits[i].split('=');
-//                 lastKey = keyvalue[0];
-//                 props[lastKey] = keyvalue[1];
-//             }
-//         }
-//     }
-//     var ow = props['width'] ? parseInt(props['width'].replace('"', ''), 10) : null,
-//         oh = props['height'] ? parseInt(props['height'].replace('"', ''), 10) : null;
-//     if (w) {
-//         props['width'] = '"' + w + '"';
-//     }
-//     if (h) {
-//         props['height'] = '"' + h + '"';
-//     }
-//     if (!props['viewBox']) {
-//         props['viewBox'] = '"' + [0, 0, ow ? ow : w, oh ? oh : h].join(' ') + '"';
-//     }
-//     props['preserveAspectRatio'] = finalAspectRatio || '"none"';
-
-//     // update width and height in style attribute
-//     if (props['style'] && props['style'].length > 2) {
-//         var styleUpdated = false;
-//         var styleStr = props['style'].substring(1, props['style'].length - 1);
-//         var styles = styleStr.split(';');
-//         for (var i = 0; i < styles.length; i++) {
-//             var styleKV = styles[i].split(':');
-//             if (styleKV.length === 2) {
-//                 var key = styleKV[0].trim();
-//                 if (key === 'width') {
-//                     styles[i] = 'width : ' + w + 'px';
-//                     styleUpdated = true;
-//                 } else if (key === 'height') {
-//                     styles[i] = 'height : ' + h + 'px';
-//                     styleUpdated = true;
-//                 }
-//             }
-//         }
-//         if (styleUpdated) {
-//             props['style'] = '"' + styles.join(';') + '"';
-//         }
-//     }
-
-//     var newSvgTag = ['<svg'];
-//     for (var p in props) {
-//         newSvgTag.push(p + '=' + props[p]);
-//     }
-//     newSvgTag.push('>');
-//     return svgContent.substring(0, index) + newSvgTag.join(' ') + svgContent.substring(endIndex + 1);
-// }
 
 function loadSVGContent(svg, callback) {
     if (svg.indexOf('data:image/svg+xml;base64,') >= 0 && !/^<svg/.test(svg)) {
