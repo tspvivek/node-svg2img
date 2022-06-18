@@ -1,6 +1,5 @@
 # node-svg2img
 
-[![CircleCI](https://circleci.com/gh/fuzhenn/node-svg2img.svg?style=svg)](https://circleci.com/gh/fuzhenn/node-svg2img)
 <a href="https://www.npmjs.com/package/svg2img"><img src="https://img.shields.io/npm/v/svg2img.svg?sanitize=true" alt="npm version"></a>
 
 A high-performance in-memory convertor to convert SVG to png/jpeg images for Node.js.
