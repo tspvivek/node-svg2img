@@ -1,5 +1,5 @@
 {
-  "name": "svg2img",
+  "name": "tspvivek-svg2img",
   "version": "1.0.0",
   "description": "A high-performance in-memory convertor to convert SVG to png/jpeg images for Node.js.",
   "license": "MIT",
