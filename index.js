@@ -44,9 +44,10 @@ function svg2img(svg, options, callback) {
                 options.resvg.background = '#fff';
             }
             var resvg = new Resvg(content, options.resvg);
-            pngData = resvg.render();
+            pngData = resvg?.render();
         } catch (error) {
             callback(error);
+            return;
         }
 
         if(!pngData) {
@@ -63,6 +64,7 @@ function svg2img(svg, options, callback) {
                 imgBuffer = await image.getBufferAsync(jimp.MIME_JPEG);
             } catch (error) {
                 callback(error);
+                return;
             }
         } else {
             imgBuffer = pngData.asPng();
