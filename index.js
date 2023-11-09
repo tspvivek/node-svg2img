@@ -49,6 +49,10 @@ function svg2img(svg, options, callback) {
             callback(error);
         }
 
+        if(!pngData) {
+            callback(new Error('Resvg returned null'));
+            return;
+        }
         if (isJpg) {
             try {
                 // Convert png to jpg using jimp.
